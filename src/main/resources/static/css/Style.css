@@ -111,10 +111,8 @@ text-decoration: none;
   color: #F26250;
   background-color: #fff;
 }
-
 body{
-    background: url(/img/bglista2.jpg) ;
-   
+  background-color: #4b5394;
 }
 nav{
   margin: 40px 40px;
@@ -153,6 +151,5 @@ nav .logo img{
 }
 
 .nave li a:hover{
-  margin-bottom: 5px;
   text-decoration: underline;
 }

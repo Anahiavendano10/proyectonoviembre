@@ -17,10 +17,10 @@ closeModal.addEventListener('click', (e)=>{
 });
 
 function confirmarEliminar(id) {
-	$("#identificadorDeUsuario").val(id);
+	$("#identificadorDeAlumno").val(id);
 }
 
-function eliminarAlumno() {
+function eliminarAlumno(){
 	var id = $("#identificadorDeAlumno").val();
 	window.location = "/eliminarAlumno/" + id;
 }

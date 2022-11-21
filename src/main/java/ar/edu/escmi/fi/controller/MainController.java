@@ -18,16 +18,21 @@ import ar.edu.escmi.fi.service.IAlumnoService;
 @Controller
 public class MainController {
   @Autowired
+  Alumno alumno;
+  @Autowired
   IAlumnoService alumnoService;
 
   @GetMapping({"/index","/home","/"})
-  public String getmenu(){
-    return "formulario";
+  public ModelAndView getmenu(){
+    ModelAndView vista= new ModelAndView("formulario");
+    vista.addObject("alumno", alumno);
+    vista.addObject("editMode",false);
+    return vista;
   }
   @GetMapping("/listado")
   public ModelAndView getlista(){
     ModelAndView vista = new ModelAndView("listado");
-    vista.addObject("listaUsuario", alumnoService.listarAlumnos());
+    vista.addObject("listaAlumno", alumnoService.listarAlumnos());
     return vista;
   }
   @GetMapping("/editarAlumno/{dni}")
@@ -65,10 +70,10 @@ public class MainController {
     try {
       alumnoService.guardarAlumno(alum);
     } catch (Exception e) {
-			model.addAttribute("unAlumno", alum);
+      System.out.println(e);
+			model.addAttribute("alumno", alum);
 			return "formulario";	
-    }
-		model.addAttribute("unUsuario", alum);			
-		return "listado";
+    }		
+		return "redirect:/listado";
   }
 }
